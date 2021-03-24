@@ -1,0 +1,43 @@
+
+//import static java.lang.Math.random;
+//import static java.lang.StrictMath.random;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class LotteryRow {
+
+    private ArrayList<Integer> numbers;
+
+    public LotteryRow() {
+        // Draw the numbers when the LotteryRow is created
+        this.randomizeNumbers();
+    }
+
+    public ArrayList<Integer> numbers() {
+        return this.numbers;
+    }
+
+    public void randomizeNumbers() {
+        // Initialize the list for numbers
+        this.numbers = new ArrayList<>();
+        Random yes = new Random();
+        
+        final int totalNumbers = 7;
+        
+        while (this.numbers.size() < totalNumbers){
+            int number = yes.nextInt(40)+1;
+            if (!this.containsNumber(number)){
+                this.numbers.add(number);
+            }
+        }
+        
+    }
+
+    public boolean containsNumber(int number) {
+        // Check here whether the number is among the drawn numbers
+        if (this.numbers.contains(number)){
+            return true;
+        }
+        return false;
+    }
+}
